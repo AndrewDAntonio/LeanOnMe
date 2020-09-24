@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :state
       t.string :city
       t.string :profile_pic
-      t.string :phone_number
+      t.string :phone_number, :default
 
       t.timestamps
     end
