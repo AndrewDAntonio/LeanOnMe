@@ -48,8 +48,7 @@ class TasksController < ApplicationController
     private
 
     def notify(message)
-        MessageSender.send_message()
-        
+        MessageSender.send_message(task.id, request.host, task_creator.phone_number, message)
     end
 
 end

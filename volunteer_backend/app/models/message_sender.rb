@@ -6,8 +6,8 @@ class MessageSender < ApplicationRecod
     def initialize
       # To find TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN visit
       # https://www.twilio.com/console
-      account_sid = ENV['ACb85bdbe726e57e231e4dd046b7f015d1']
-      auth_token  = ENV['dd300993799701e73c03258a753b48e1']
+      account_sid = ENV[TWILIO_ACCOUNT_SID]
+      auth_token  = ENV[TWILIO_AUTH_TOKEN]
       @client = Twilio::REST::Client.new(account_sid, auth_token)
     end
   
