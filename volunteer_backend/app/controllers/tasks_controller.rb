@@ -36,10 +36,14 @@ class TasksController < ApplicationController
         message = 'Your task has been updated'
         task = Task.find_by(id: params[:id])
         current_user = User.find_by(id: session[:user_id])
+        
         if task.task_doer_id == nil
             task.update(task_doer_id: current_user.id, status: task.statusUpdate)
+            notify(message)
+            
         else
             task.update(status: task.statusUpdate)
+            notify(message)
         end
 
         render json: task
@@ -48,7 +52,7 @@ class TasksController < ApplicationController
     private
 
     def notify(message)
-        MessageSender.send_message(task.id, request.host, task_creator.phone_number, message)
+        MessageSender.send_message('+15163985669', message)
     end
 
 end
